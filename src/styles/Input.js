@@ -20,4 +20,6 @@ const Wrapper = styled.input`
   border: 1px solid #d5d5d5;
   border-radius: 5px;
   margin: 6px auto;
+  padding: 8px;
+  font-size: 20px;
 `;

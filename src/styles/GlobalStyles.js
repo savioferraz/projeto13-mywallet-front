@@ -72,10 +72,12 @@ form{
 	justify-content:center;
 }
 a {
+	color: #ffffff;
 	font-weight: 700;
 	font-size: 15px;
 	line-height: 18px;
 	text-decoration: none;
+	margin: 8px auto;
 	cursor: pointer;
 }
 `;
