@@ -1,5 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
+import UserContext from "../common/UserContext";
 
 export default function Expenses() {
-  return <>oi</>;
+  const { email } = useContext(UserContext);
+
+  return <>ola {email}</>;
 }

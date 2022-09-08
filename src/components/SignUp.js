@@ -11,7 +11,7 @@ export default function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
-  const body = { name, email, password };
+  const body = { name, email, password, passwordConfirm };
 
   function handleForm(e) {
     e.preventDefault();

@@ -1,17 +1,17 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import GlobalStyle from "./styles/GlobalStyles";
-import UserContext from "./common/UserContext";
 import Expenses from "./components/Expenses.js";
 import Home from "./components/Home.js";
 import Incomes from "./components/Incomes.js";
 import Login from "./components/Login.js";
 import SignUp from "./components/SignUp.js";
-import PrivatePage from "./PrivatePage.js";
+import PrivatePage from "./common/PrivatePage.js";
+import { UserProvider } from "./common/UserContext.js";
 
 export default function App() {
   return (
-    <UserContext.Provider value={{}}>
+    <UserProvider>
       <GlobalStyle />
       <BrowserRouter>
         <Routes>
@@ -29,6 +29,6 @@ export default function App() {
           <Route path="/incomes" element={<Incomes />} />
         </Routes>
       </BrowserRouter>
-    </UserContext.Provider>
+    </UserProvider>
   );
 }

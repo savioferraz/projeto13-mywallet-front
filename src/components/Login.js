@@ -1,13 +1,14 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Input from "../styles/Input";
 import Button from "../styles/Button";
 import { postLogin } from "../common/Services";
 import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import UserContext from "../common/UserContext";
 
 export default function Login() {
   const navigate = useNavigate();
-  const [email, setEmail] = useState("");
+  const { email, setEmail } = useContext(UserContext);
   const [password, setPassword] = useState("");
   const body = { email, password };
 
