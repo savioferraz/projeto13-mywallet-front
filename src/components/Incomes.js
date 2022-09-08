@@ -25,7 +25,7 @@ export default function Incomes() {
 
   return (
     <Wraped>
-      <h1>MyWallet</h1>
+      <h1>Nova entrada</h1>
       <form onSubmit={handleForm}>
         <Input
           placeholder={"Valor"}
@@ -48,9 +48,10 @@ export default function Incomes() {
 }
 
 const Wraped = styled.div`
+  text-align: left;
   h1 {
-    font-family: Saira Stencil One;
-    font-size: 32px;
+    font-weight: 700;
+    font-size: 26px;
     margin: 24px auto;
   }
 `;

@@ -25,5 +25,16 @@ const Wraped = styled.button`
   text-align: center;
   border: none;
   border-radius: 5px;
-  margin: 3px auto;
+  margin: 3px;
+  ion-icon {
+    color: #ffffff;
+    font-size: 32px;
+  }
+  div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 80%;
+    text-align: left;
+  }
 `;

@@ -59,9 +59,9 @@ body {
     font-family: Raleway, sans-serif;
 	background-color: #8C11BE;
 	color: #ffffff;
-	max-width: 100vw;
+	width: 100vw;
 	height: 100vh;
-	padding: 8vh 10vw;
+	padding: 4vh 5vw;
 	position: relative;
 	text-align: center;
 }
