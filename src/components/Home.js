@@ -8,9 +8,40 @@ export default function Home() {
 
   return (
     <Wraped>
-      <h1>Olá Fulano</h1>
+      <h1>
+        Olá Fulano
+        <span>
+          <ion-icon
+            name="log-out-outline"
+            onClick={() => navigate("/")}
+          ></ion-icon>
+        </span>
+      </h1>
       <Content>
-        <Extract>extrato</Extract>
+        <Extract>
+          <div className="transactions">
+            <h2>
+              <span>09/09</span>Salário
+            </h2>
+            <h3>2000,00</h3>
+          </div>
+          <div className="transactions">
+            <h2>
+              <span>09/09</span>Salário
+            </h2>
+            <h3>2000,00</h3>
+          </div>
+          <div className="transactions">
+            <h2>
+              <span>09/09</span>Salário
+            </h2>
+            <h3>2000,00</h3>
+          </div>
+        </Extract>
+        <Total>
+          <h4>SALDO</h4>
+          <h5>6000,00</h5>
+        </Total>
         <div className="buttons">
           <Button
             width="43vw"
@@ -42,7 +73,12 @@ const Wraped = styled.div`
   h1 {
     font-weight: 700;
     font-size: 26px;
-    margin: 24px auto;
+    margin: 20px auto;
+    display: flex;
+    justify-content: space-between;
+  }
+  span ion-icon {
+    font-size: 32px;
   }
 `;
 
@@ -59,7 +95,56 @@ const Content = styled.div`
 const Extract = styled.div`
   background-color: #ffffff;
   width: 100%;
-  height: 60vh;
-  border-radius: 5px;
-  color: #868686;
+  height: 54vh;
+  border-radius: 5px 5px 0 0;
+  padding-top: 2px;
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  ::-webkit-scrollbar {
+    display: none;
+  }
+  .transactions {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 12px;
+  }
+  h2 {
+    font-size: 16px;
+    line-height: 19px;
+    color: #000000;
+    text-align: left;
+  }
+  span {
+    color: #c6c6c6;
+    margin-right: 12px;
+  }
+  h3 {
+    color: #03ac00;
+  }
+`;
+
+const Total = styled.div`
+  background-color: #ffffff;
+  width: 100%;
+  height: 6vh;
+  border-radius: 0 0 5px 5px;
+  display: flex;
+  justify-content: space-between;
+  h4 {
+    font-weight: 700;
+    font-size: 17px;
+    line-height: 20px;
+    color: #000000;
+    margin: 12px;
+  }
+  h5 {
+    font-weight: 400;
+    font-size: 17px;
+    line-height: 20px;
+    right: 300;
+    margin: 12px;
+    color: #03ac00;
+  }
 `;

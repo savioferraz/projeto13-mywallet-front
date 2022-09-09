@@ -27,7 +27,6 @@ const Wraped = styled.button`
   border-radius: 5px;
   margin: 3px;
   ion-icon {
-    color: #ffffff;
     font-size: 32px;
   }
   div {
