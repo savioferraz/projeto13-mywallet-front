@@ -18,6 +18,12 @@ function postLogin(body) {
   return promise;
 }
 
+function getUser() {
+  const config = createHeaders();
+  const promise = axios.get(`${url}/user`, config);
+  return promise;
+}
+
 function getTransacions() {
   const config = createHeaders();
   const promise = axios.get(`${url}/transactions`, config);
@@ -40,6 +46,7 @@ export {
   createHeaders,
   postLogin,
   postSignUp,
+  getUser,
   postIncome,
   postExpense,
   getTransacions,

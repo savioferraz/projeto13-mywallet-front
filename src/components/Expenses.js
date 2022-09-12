@@ -14,7 +14,10 @@ export default function Incomes() {
   function handleForm(e) {
     e.preventDefault();
     postExpense(body)
-      .then(() => {
+      .then((ans) => {
+        const token = ans.data.token;
+        const authJSON = JSON.stringify({ token: token });
+        localStorage.setItem("mywallet", authJSON);
         navigate("/home");
       })
       .catch((error) => alert(`Opa, algo deu errado... ${error.message}`));

@@ -1,20 +1,20 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Button from "../styles/Button";
-import UserContext from "../common/UserContext";
-import { getTransacions } from "../common/Services";
+import { getTransacions, getUser } from "../common/Services";
 
 export default function Home() {
   const navigate = useNavigate();
-  const { email } = useContext(UserContext);
   const [transactions, setTransactions] = useState([]);
+  const [userData, setUserData] = useState([]);
 
   useEffect(() => {
     getTransacions()
-      .then((ans) => {
-        setTransactions(ans.data);
-      })
+      .then((ans) => setTransactions(ans.data))
+      .catch((error) => alert(`Opa, algo deu errado... ${error.message}`));
+    getUser()
+      .then((ans) => setUserData(ans.data))
       .catch((error) => alert(`Opa, algo deu errado... ${error.message}`));
   }, []);
 
@@ -22,34 +22,40 @@ export default function Home() {
 
   return (
     <Wraped>
-      <h1>
-        Olá {email}
-        <span>
-          <ion-icon
-            name="log-out-outline"
-            onClick={() => navigate("/")}
-          ></ion-icon>
-        </span>
-      </h1>
+      {userData.length === 0 ? (
+        <></>
+      ) : (
+        userData.map((ans) => (
+          <h1>
+            Olá {ans.name}
+            <span>
+              <ion-icon
+                name="log-out-outline"
+                onClick={() => navigate("/")}
+              ></ion-icon>
+            </span>
+          </h1>
+        ))
+      )}
       <Content>
         <Extract>
           {transactions.length === 0 ? (
             <div className="empty">Não há registros de entrada ou saída</div>
           ) : (
-            transactions.map((trans) => (
-              <div className="transactions">
+            transactions.map((ans) => (
+              <div className="transactions" key={ans.id}>
                 <h2>
-                  <span>{trans.date}</span>
-                  {trans.desc}
+                  <span>{ans.date}</span>
+                  {ans.desc}
                 </h2>
-                <h3>{trans.amount}</h3>
+                <h3>{ans.amount}</h3>
               </div>
             ))
           )}
         </Extract>
         <Total>
           <h4>SALDO</h4>
-          <h5>6000,00</h5>
+          <h5>0,00</h5>
         </Total>
         <div className="buttons">
           <Button
@@ -140,6 +146,8 @@ const Extract = styled.div`
     font-size: 20px;
     line-height: 23px;
     text-align: center;
+    color: #868686;
+    margin: 50% auto;
   }
 `;
 
