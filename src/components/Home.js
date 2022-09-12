@@ -34,7 +34,7 @@ export default function Home() {
       <Content>
         <Extract>
           {transactions.length === 0 ? (
-            <></>
+            <div className="empty">Não há registros de entrada ou saída</div>
           ) : (
             transactions.map((trans) => (
               <div className="transactions">
@@ -131,6 +131,15 @@ const Extract = styled.div`
   }
   h3 {
     color: #03ac00;
+  }
+  .empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 23px;
+    text-align: center;
   }
 `;
 
