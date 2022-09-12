@@ -17,7 +17,7 @@ export default function Login() {
     postLogin(body)
       .then((ans) => {
         const token = ans.data;
-        const authJSON = JSON.stringify({ token: token });
+        const authJSON = JSON.stringify({ token });
         localStorage.setItem("mywallet", authJSON);
         navigate("/home");
       })
