@@ -1,15 +1,29 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import Button from "../styles/Button";
+import UserContext from "../common/UserContext";
+import { getTransacions } from "../common/Services";
 
 export default function Home() {
   const navigate = useNavigate();
+  const { email } = useContext(UserContext);
+  const [transactions, setTransactions] = useState([]);
+
+  useEffect(() => {
+    getTransacions()
+      .then((ans) => {
+        setTransactions(ans.data);
+      })
+      .catch((error) => alert(`Opa, algo deu errado... ${error.message}`));
+  }, []);
+
+  console.log(transactions);
 
   return (
     <Wraped>
       <h1>
-        Olá Fulano
+        Olá {email}
         <span>
           <ion-icon
             name="log-out-outline"
@@ -19,24 +33,19 @@ export default function Home() {
       </h1>
       <Content>
         <Extract>
-          <div className="transactions">
-            <h2>
-              <span>09/09</span>Salário
-            </h2>
-            <h3>2000,00</h3>
-          </div>
-          <div className="transactions">
-            <h2>
-              <span>09/09</span>Salário
-            </h2>
-            <h3>2000,00</h3>
-          </div>
-          <div className="transactions">
-            <h2>
-              <span>09/09</span>Salário
-            </h2>
-            <h3>2000,00</h3>
-          </div>
+          {transactions.length === 0 ? (
+            <></>
+          ) : (
+            transactions.map((trans) => (
+              <div className="transactions">
+                <h2>
+                  <span>{trans.date}</span>
+                  {trans.desc}
+                </h2>
+                <h3>{trans.amount}</h3>
+              </div>
+            ))
+          )}
         </Extract>
         <Total>
           <h4>SALDO</h4>

@@ -18,14 +18,29 @@ function postLogin(body) {
   return promise;
 }
 
+function getTransacions() {
+  const config = createHeaders();
+  const promise = axios.get(`${url}/transactions`, config);
+  return promise;
+}
+
 function postIncome(body) {
-  const promise = axios.post(`${url}/incomes`, body);
+  const config = createHeaders();
+  const promise = axios.post(`${url}/incomes`, body, config);
   return promise;
 }
 
 function postExpense(body) {
-  const promise = axios.post(`${url}/expenses`, body);
+  const config = createHeaders();
+  const promise = axios.post(`${url}/expenses`, body, config);
   return promise;
 }
 
-export { createHeaders, postLogin, postSignUp, postIncome, postExpense };
+export {
+  createHeaders,
+  postLogin,
+  postSignUp,
+  postIncome,
+  postExpense,
+  getTransacions,
+};
