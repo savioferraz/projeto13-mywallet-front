@@ -18,8 +18,6 @@ export default function Home() {
       .catch((error) => alert(`Opa, algo deu errado... ${error.message}`));
   }, []);
 
-  console.log(transactions);
-
   return (
     <Wraped>
       {userData.length === 0 ? (
@@ -31,7 +29,10 @@ export default function Home() {
             <span>
               <ion-icon
                 name="log-out-outline"
-                onClick={() => navigate("/")}
+                onClick={() => {
+                  navigate("/");
+                  localStorage.removeItem("mywallet");
+                }}
               ></ion-icon>
             </span>
           </h1>
