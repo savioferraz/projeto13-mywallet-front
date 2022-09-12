@@ -17,7 +17,7 @@ export default function SignUp() {
     e.preventDefault();
     postSignUp(body)
       .then((ans) => {
-        const token = ans.data.token;
+        const token = ans.data;
         const authJSON = JSON.stringify({ token: token });
         localStorage.setItem("mywallet", authJSON);
         navigate("/home");

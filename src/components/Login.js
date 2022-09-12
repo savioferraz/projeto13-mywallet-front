@@ -16,7 +16,6 @@ export default function Login() {
     e.preventDefault();
     postLogin(body)
       .then((ans) => {
-        console.log(ans.data);
         const token = ans.data;
         const authJSON = JSON.stringify({ token: token });
         localStorage.setItem("mywallet", authJSON);
